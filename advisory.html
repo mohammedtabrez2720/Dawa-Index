@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrugInfo- Drug Information Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="drugData.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="language.js"></script>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="notranslate">
+    <div class="container header-content">
+        <div class="logo">
+            <i class="fas fa-pills"></i>
+            <h1 data-i18n="app_name">Dawa Index</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="home">Home</a></li>
+                <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                <!-- ===== INTERACTIONS WITH DROPDOWN ===== -->
+                    <li class="dropdown-parent">
+                        <span class="nav-link-with-arrow" data-i18n="interactions">
+                            Interactions
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="interactions.html">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Drug-Drug Interaction Checker
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Drug-Herb.html">
+                                    <i class="fas fa-mortar-pestle"></i>
+                                    Drug-Herb Interactions Checker
+                                    <span class="badge-new">New</span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="Drug-Food.html">
+                                    <i class="fas fa-utensils"></i>
+                                    Drug-Food Interactions Checker
+                                    <span class="badge-new">New</span>
+                                </a>
+                            </li> 
+                        </ul>
+                <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                <li><a href="About.html" data-i18n="about">About</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+
+<div class="container" style="padding: 3rem 15px;">
+   <div class="news-advisory-card">
+        
+        <div class="advisory-header">
+            <div class="pulse-icon-wrapper">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="header-content">
+                <span class="urgent-badge" data-i18n="public_health_advisory">PUBLIC HEALTH ADVISORY</span>
+                <h2 data-i18n="nimesulide_ban_title">Nimesulide Ban Status in India</h2>
+            </div>
+        </div>
+
+        <div class="advisory-body">
+            <div class="regulatory-status">
+                <i class="fas fa-gavel"></i>
+                <span><strong data-i18n="regulatory_status">Regulatory Status:</strong> <span data-i18n="nationwide_restrictions">Subject to Nationwide Restrictions</span></span>
+            </div>
+
+            <div class="restriction-grid">
+                <div class="restriction-card">
+                    <div class="icon-box"><i class="fas fa-child"></i></div>
+                    <div class="text-box">
+                        <h4 data-i18n="children_under_12">Children Under 12</h4>
+                        <p data-i18n="children_under_12_desc">Manufacture, sale, and distribution strictly prohibited. This age group is highly susceptible to Nimesulide-induced hepatotoxicity (severe liver damage).</p>
+                    </div>
+                </div>
+
+                <div class="restriction-card">
+                    <div class="icon-box"><i class="fas fa-pills"></i></div>
+                    <div class="text-box">
+                        <h4 data-i18n="high_dose_formulations">High-Dose Formulations</h4>
+                        <p data-i18n="high_dose_desc">All oral formulations containing more than 100 mg of Nimesulide are prohibited with immediate effect due to increased health risks.</p>
+                    </div>
+                </div>
+
+                <div class="restriction-card">
+                    <div class="icon-box"><i class="fas fa-paw"></i></div>
+                    <div class="text-box">
+                        <h4 data-i18n="veterinary_use">Veterinary Use</h4>
+                        <p data-i18n="veterinary_desc">Officially banned nationwide to prevent lethal renal failure in endangered vultures that scavenge on treated livestock carcasses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="advisory-footer">
+            <i class="fas fa-clipboard-check"></i>
+            <div class="footer-text">
+                <strong data-i18n="compliance_action">Immediate Compliance Action Required:</strong> 
+                <span data-i18n="compliance_desc">All pharmacies, retailers, and hospitals must remove banned higher-dose formulations (>100 mg) and pediatric formulations from shelves and return them to suppliers.</span>
+            </div>
+        </div>
+        
+    </div>
+        
+    </div>
+</div>
+<footer class="notranslate">
+   <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="app_name">DrugInfo</h3>
+                <p data-i18n="footer_desc">Your trusted source for comprehensive drug information, side effects, contraindications, and interactions.</p>
+            </div>
+             <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 6px; border-left: 3px solid #4a9fb9;">
+                    <p style="font-size: 0.85rem; margin: 0; color: #ddd;">
+                        <i class="fas fa-database" style="color: #4a9fb9; margin-right: 5px;"></i>
+                        <strong>Data Source:</strong> All drug information, side effects, and interactions are referenced directly from the <strong>US Food and Drug Administration (openFDA)</strong>.
+                    </p>
+                </div>
+            <div class="footer-section">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-i18n="home">Home</a></li>
+                    <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                    <li><a href="interactions.html" data-i18n="interactions">Interactions</a></li>
+                    <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                    <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                    <li><a href="About.html" data-i18n="about">About</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="contact_us">Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> mohammedtabrez2720@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9273672720</p>
+                <p><i class="fas fa-map-marker-alt"></i><span data-i18n="contact_location">Malegaon, Maharashtra, (India)</span></p>
+            </div>
+        </div>
+    
+    
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span data-i18n="app_name">DrugInfo</span>. <span data-i18n="all_rights_reserved">All rights reserved</span>.</p>
+        </div>
+    </div>
+
+    
+</footer>
+</body>
+</html>
