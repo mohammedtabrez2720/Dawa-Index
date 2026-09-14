@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Interaction Checker | Dawa Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="drugData.js" defer></script>
+    <script src="interactionChecker.js" defer></script>
+    <script src="language.js"></script>
+</head>
+<body>
+    <header class="notranslate">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <h1 data-i18n="app_name">Dawa Index</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Index.html" data-i18n="home">Home</a></li>
+                    <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                    <li class="dropdown-parent">
+                        <span class="nav-link-with-arrow" data-i18n="interactions">
+                            Interactions
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li><a href="interactions.html"><i class="fas fa-exchange-alt"></i> Drug-Drug Interaction Checker</a></li>
+                            <li><a href="Drug-Herb.html"><i class="fas fa-mortar-pestle"></i> Drug-Herb Interactions Checker <span class="badge-new">New</span></a></li> 
+                            <li><a href="Drug-Food.html"><i class="fas fa-utensils"></i> Drug-Food Interactions Checker <span class="badge-new">New</span></a></li> 
+                        </ul>
+                    </li>
+                    <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                    <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                    <li><a href="About.html" data-i18n="about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="min-height: 200px; padding: 2rem 0;">
+        <div class="container hero-content">
+            <h1 data-i18n="interaction_checker"><i class="fas fa-exchange-alt"></i> Drug Interaction Checker</h1>
+            <p data-i18n="interaction_subtitle">Check for potential interactions between medications, supplements, and health conditions.</p>
+        </div>
+    </section>
+
+    <section class="interaction-checker">
+        <div class="container">
+            <h2 class="section-title" data-i18n="check_drug_interactions">Check Drug Interactions</h2>
+            <div class="checker-container">
+                <div class="search-container">
+                    <input type="text" id="drugSearchInput" data-i18n-placeholder="search_placeholder_interaction" placeholder="Search by drug name (e.g., Ibuprofen, Warfarin, Sertraline)...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+
+                <div class="selected-drugs-container">
+                    <h3 class="section-title">
+                      <i class="fas fa-capsules"></i> <span data-i18n="selected_medications">Selected Medications</span>
+                      <span id="drugCount" style="font-size: 0.9rem; color: var(--gray);">(0)</span>
+                    </h3>
+                    <div id="selectedDrugsContainer" class="selected-drugs-list"></div>
+                </div>
+
+                <div class="action-buttons" style="display: flex; gap: 1rem; margin: 1.5rem 0;">
+                   <button id="checkInteractionsBtn" class="btn btn-primary" disabled>
+                        <i class="fas fa-search"></i> <span data-i18n="check_interactions">Check for Interactions</span>
+                    </button>
+                    <button id="clearAllBtn" class="btn btn-outline" style="color: #2a5a7c; border-color: #2a5a7c;">
+                        <i class="fas fa-trash-alt"></i> <span data-i18n="clear_all">Clear All</span>
+                    </button>
+                </div>
+
+                <div id="resultsContainer" style="display: none; margin-top: 2rem;">
+                    <h3 data-i18n="interaction_results"><i class="fas fa-file-medical"></i> Interaction Report</h3>
+                    
+                    <div class="summary-card">
+                        <div class="summary-header">
+                            <i class="fas fa-clipboard-check"></i>
+                            <h4 data-i18n="summary">Summary</h4>
+                        </div>
+                        <div class="summary-content">
+                            <div class="summary-item">
+                                <span class="label" data-i18n="total_drugs">Total Drugs:</span>
+                                <span id="totalDrugs" class="value">0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label" data-i18n="interactions_found">Interactions Found:</span>
+                                <span id="totalInteractions" class="value">0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label" data-i18n="highest_severity">Highest Severity:</span>
+                                <span id="highestSeverity" class="value severity-none">None</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="detailedResults" class="detailed-results" style="margin-top: 2rem;"></div>
+
+                    <div class="safety-recommendations" style="margin-top: 2rem;">
+                        <h4><i class="fas fa-shield-alt"></i> <span data-i18n="safety_recommendations">Safety Recommendations</span></h4>
+                        <div id="recommendationsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" style="background: #f8f9fa; margin-top: 4rem;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="how_it_works">How Our Interaction Checker Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search"></i>
+                    <h3 data-i18n="search_add_drugs">Search & Add Drugs</h3>
+                    <p data-i18n="search_add_desc">Search for drugs by brand name or generic name from our comprehensive database</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3 data-i18n="intelligent_analysis">Intelligent Analysis</h3>
+                    <p data-i18n="intelligent_analysis_desc">Our system analyzes pharmacological properties and known interactions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3 data-i18n="risk_assessment">Risk Assessment</h3>
+                    <p data-i18n="risk_assessment_desc">Identifies potential risks and provides severity ratings for each interaction</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3 data-i18n="safety_recommendations_heading">Safety Recommendations</h3>
+                    <p data-i18n="safety_recommendations_desc">Provides actionable recommendations based on interaction severity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="notranslate">
+        <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="app_name">Dawa Index</h3>
+                <p data-i18n="footer_desc">Your trusted source for comprehensive drug information, side effects, contraindications, and interactions.</p>
+            </div>
+             <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 6px; border-left: 3px solid #4a9fb9;">
+                    <p style="font-size: 0.85rem; margin: 0; color: #ddd;">
+                        <i class="fas fa-database" style="color: #4a9fb9; margin-right: 5px;"></i>
+                        <strong>Data Source:</strong> All drug information, side effects, and interactions are referenced directly from the <strong>US Food and Drug Administration (openFDA)</strong>.
+                    </p>
+                </div>
+            <div class="footer-section">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-i18n="home">Home</a></li>
+                    <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                    <li><a href="interactions.html" data-i18n="interactions">Interactions</a></li>
+                    <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                    <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                    <li><a href="About.html" data-i18n="about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="contact_us">Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> mohammedtabrez2720@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9273672720</p>
+                <p><i class="fas fa-map-marker-alt"></i><span data-i18n="contact_location">Malegaon, Maharashtra, (India)</span></p>
+            </div>
+        </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span data-i18n="app_name">DrugInfo</span>. <span data-i18n="all_rights_reserved">All rights reserved</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="disclaimerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</h2>
+                <span class="close" onclick="closeModal('disclaimerModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="disclaimer-section">
+                    <p><strong>This interaction checker is for educational purposes only.</strong></p>
+                    <p>The information provided by this tool should not replace professional medical advice, diagnosis, or treatment.</p>
+                    <p>Always consult with a qualified healthcare provider before making any changes to your medication regimen.</p>
+                    <p>The results are based on known pharmacological interactions and may not include all possible interactions.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('disclaimerModal')">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'none';
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const modal = document.getElementById('disclaimerModal');
+                if (modal) modal.style.display = 'flex';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
