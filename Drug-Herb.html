@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug-Herb Interaction Checker | Dawa Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="language.js"></script>
+</head>
+<body>
+    <header class="notranslate">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <h1 data-i18n="app_name">Dawa Index</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Index.html" data-i18n="home">Home</a></li>
+                    <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                    <li class="dropdown-parent">
+                        <span class="nav-link-with-arrow" data-i18n="interactions">
+                            Interactions
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li><a href="interactions.html"><i class="fas fa-exchange-alt"></i> Drug-Drug Interaction Checker</a></li>
+                            <li><a href="Drug-Herb.html"><i class="fas fa-mortar-pestle"></i> Drug-Herb Interactions Checker <span class="badge-new">New</span></a></li> 
+                            <li><a href="Drug-Food.html"><i class="fas fa-utensils"></i> Drug-Food Interactions Checker <span class="badge-new">New</span></a></li> 
+                        </ul>
+                    </li>
+                    <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                    <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                    <li><a href="About.html" data-i18n="about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="min-height: 200px; padding: 2rem 0;">
+        <div class="container hero-content">
+            <h1 data-i18n="drug_herb_title"><i class="fas fa-mortar-pestle"></i> Drug-Herb Interaction Checker</h1>
+            <p data-i18n="drug_herb_subtitle">Check for potential interactions between your medications and herbal supplements.</p>
+        </div>
+    </section>
+
+    <section class="interaction-checker">
+        <div class="container">
+            <h2 class="section-title" data-i18n="check_herb_interactions">Check Drug-Herb Interactions</h2>
+            
+            <div class="checker-container">
+                <div class="drug-selectors" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div class="selector">
+                        <label for="drugSelectHerb"><i class="fas fa-pills"></i> <span data-i18n="select_drug">Select Medication</span></label>
+                        <select id="drugSelectHerb">
+                            <!-- NO data-i18n here, so these stay in English -->
+                            <option value="" data-i18n="select_drug_placeholder">-- Select a Drug --</option>
+                            <option value="warfarin">Warfarin (Anticoagulant)</option>
+                            <option value="ssri">SSRIs (Sertraline, Fluoxetine)</option>
+                            <option value="antidiabetic">Antidiabetics (Glipizide, Metformin)</option>
+                            <option value="immunosuppressant">Immunosuppressants (Cyclosporine)</option>
+                        </select>
+                    </div>
+                    <div class="selector">
+                        <label for="herbSelect"><i class="fas fa-leaf"></i> <span data-i18n="select_herb">Select Herbal Supplement</span></label>
+                        <select id="herbSelect">
+                            <!-- NO data-i18n here, so these stay in English -->
+                            <option value="" data-i18n="select_herb_placeholder">-- Select a Herb --</option>
+                            <option value="st_johns_wort">St. John's Wort</option>
+                            <option value="ginkgo">Ginkgo Biloba</option>
+                            <option value="garlic">Garlic (Supplement)</option>
+                            <option value="ginseng">Ginseng</option>
+                            <option value="valerian">Valerian Root</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="action-buttons" style="display: flex; gap: 1rem; margin: 1.5rem 0; justify-content: center;">
+                    <button id="checkHerbInteractionBtn" class="btn btn-primary" disabled>
+                        <i class="fas fa-search"></i> <span data-i18n="check_interactions">Check for Interactions</span>
+                    </button>
+                    <button id="clearHerbBtn" class="btn btn-outline" style="color: #2a5a7c; border-color: #2a5a7c;">
+                        <i class="fas fa-trash-alt"></i> <span data-i18n="clear_all">Clear</span>
+                    </button>
+                </div>
+
+                <div id="herbResultsContainer" style="display: none; margin-top: 2rem;">
+                    <h3 data-i18n="interaction_results"><i class="fas fa-file-medical"></i> Interaction Report</h3>
+                    <div id="herbDetailedResults" class="detailed-results" style="margin-top: 1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="notranslate">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="app_name">Dawa Index</h3>
+                    <p data-i18n="footer_desc">Your trusted source for comprehensive drug information.</p>
+                </div>
+                <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 6px; border-left: 3px solid #4a9fb9;">
+                    <p style="font-size: 0.85rem; margin: 0; color: #ddd;">
+                        <i class="fas fa-database" style="color: #4a9fb9; margin-right: 5px;"></i>
+                        <strong>Data Source:</strong> US Food and Drug Administration (openFDA).
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="quick_links">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="home">Home</a></li>
+                        <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                        <li><a href="interactions.html" data-i18n="interactions">Interactions</a></li>
+                        <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                        <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                        <li><a href="About.html" data-i18n="about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="contact_us">Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> mohammedtabrez2720@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9273672720</p>
+                    <p><i class="fas fa-map-marker-alt"></i><span data-i18n="contact_location">Malegaon, Maharashtra, (India)</span></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span data-i18n="app_name">DrugInfo</span>. <span data-i18n="all_rights_reserved">All rights reserved</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const herbInteractionsDB = [
+            { drug: 'warfarin', herb: 'ginkgo', severity: 'major', desc_en: 'Ginkgo Biloba has antiplatelet properties and can significantly increase the risk of bleeding when combined with Warfarin.', desc_hi: 'जिन्कगो बिलोबा में एंटीप्लेटलेट गुण होते हैं और वारफारिन के साथ मिलाने पर रक्तस्राव का खतरा काफी बढ़ सकता है।', rec_en: 'Avoid this combination. Consult your doctor before starting Ginkgo.', rec_hi: 'इस संयोजन से बचें। जिन्कगो शुरू करने से पहले अपने डॉक्टर से परामर्श लें।' },
+            { drug: 'warfarin', herb: 'garlic', severity: 'moderate', desc_en: 'Garlic supplements can enhance the anticoagulant effect of Warfarin, increasing bleeding risk.', desc_hi: 'लहसुन की खुराक वारफारिन के एंटीकोआगुलेंट प्रभाव को बढ़ा सकती है, जिससे रक्तस्राव का खतरा बढ़ जाता है।', rec_en: 'Use with caution. Monitor for unusual bruising or bleeding.', rec_hi: 'सावधानी के साथ उपयोग करें। असामान्य चोट या रक्तस्राव की निगरानी करें।' },
+            { drug: 'ssri', herb: 'st_johns_wort', severity: 'major', desc_en: 'St. John\'s Wort can cause a dangerous increase in serotonin levels (Serotonin Syndrome) when taken with SSRIs.', desc_hi: 'सेंट जॉन्स वॉर्ट SSRIs के साथ लेने पर सेरोटोनिन के स्तर में खतरनाक वृद्धि (सेरोटोनिन सिंड्रोम) का कारण बन सकता है।', rec_en: 'Absolutely contraindicated. Do not use together.', rec_hi: 'पूरी तरह से contraindicated। एक साथ उपयोग न करें।' },
+            { drug: 'antidiabetic', herb: 'ginseng', severity: 'moderate', desc_en: 'Ginseng may enhance the blood sugar-lowering effect of antidiabetic drugs, leading to hypoglycemia.', desc_hi: 'जिनसेंग एंटीडायबिटिक दवाओं के रक्त शर्करा कम करने वाले प्रभाव को बढ़ा सकता है, जिससे हाइपोग्लाइसीमिया हो सकता है।', rec_en: 'Monitor blood glucose levels closely. Adjust medication if advised by your doctor.', rec_hi: 'रक्त शर्करा के स्तर की बारीकी से निगरानी करें। डॉक्टर की सलाह पर दवा समायोजित करें।' },
+            { drug: 'immunosuppressant', herb: 'st_johns_wort', severity: 'major', desc_en: 'St. John\'s Wort reduces the effectiveness of immunosuppressants by speeding up their metabolism.', desc_hi: 'सेंट जॉन्स वॉर्ट चयापचय को तेज करके इम्यूनोसप्रेसेन्ट्स की प्रभावशीलता को कम करता है।', rec_en: 'Avoid combination. Reduced drug levels can lead to organ rejection.', rec_hi: 'संयोजन से बचें। कम दवा स्तर अंग अस्वीकृति का कारण बन सकता है।' }
+        ];
+
+        let currentHerbResult = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const drugSelect = document.getElementById('drugSelectHerb');
+            const herbSelect = document.getElementById('herbSelect');
+            const checkBtn = document.getElementById('checkHerbInteractionBtn');
+            const clearBtn = document.getElementById('clearHerbBtn');
+            const resultsContainer = document.getElementById('herbResultsContainer');
+            const detailedResults = document.getElementById('herbDetailedResults');
+
+            function validateForm() { checkBtn.disabled = !(drugSelect.value && herbSelect.value); }
+            drugSelect.addEventListener('change', validateForm);
+            herbSelect.addEventListener('change', validateForm);
+
+            function renderResult() {
+                if (!currentHerbResult) return;
+                const lang = localStorage.getItem('druginfo_lang') || 'en';
+                const t = (key) => window.languageManager ? window.languageManager.getTranslation(key) : key;
+                
+                const interaction = currentHerbResult;
+                // Because the <option> tags no longer have data-i18n, .text will ALWAYS be English
+                const drugText = drugSelect.options[drugSelect.selectedIndex].text;
+                const herbText = herbSelect.options[herbSelect.selectedIndex].text;
+
+                resultsContainer.style.display = 'block';
+                
+                if (interaction.notFound) {
+                    detailedResults.innerHTML = `
+                        <div class="no-interactions" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 8px;">
+                            <i class="fas fa-check-circle" style="font-size: 3rem; color: #28a745; margin-bottom: 1rem;"></i>
+                            <h4>${t('no_interaction_title')}</h4>
+                            <p>${t('no_interaction_desc_herb')}</p>
+                            <p class="note" style="font-size: 0.9rem; color: #6c757d; margin-top: 10px;">${t('consult_doctor_note')}</p>
+                        </div>
+                    `;
+                } else {
+                    const desc = lang === 'hi' ? interaction.desc_hi : interaction.desc_en;
+                    const rec = lang === 'hi' ? interaction.rec_hi : interaction.rec_en;
+                    const severityLabel = t(interaction.severity + '_risk');
+
+                    detailedResults.innerHTML = `
+                        <div class="interaction-card">
+                            <div class="drug-pair">
+                                <div class="drug-item"><h5>${drugText}</h5><span class="category">${t('medication_label')}</span></div>
+                                <div class="interaction-symbol"><i class="fas fa-plus"></i></div>
+                                <div class="drug-item"><h5>${herbText}</h5><span class="category">${t('herb_label')}</span></div>
+                            </div>
+                            <div class="interactions-list">
+                                <div class="interaction-item severity-${interaction.severity}">
+                                    <div class="severity-indicator">
+                                        <i class="fas ${interaction.severity === 'major' ? 'fa-ban' : 'fa-exclamation-triangle'}"></i>
+                                        <span class="severity-label">${severityLabel}</span>
+                                    </div>
+                                    <div class="interaction-details">
+                                        <p class="description">${desc}</p>
+                                        <p class="recommendation"><strong>${t('recommendation_label')}</strong> ${rec}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            checkBtn.addEventListener('click', function() {
+                currentHerbResult = herbInteractionsDB.find(item => item.drug === drugSelect.value && item.herb === herbSelect.value) || { notFound: true };
+                renderResult();
+            });
+
+            clearBtn.addEventListener('click', function() {
+                drugSelect.value = ''; herbSelect.value = ''; validateForm(); resultsContainer.style.display = 'none'; currentHerbResult = null;
+            });
+
+            window.refreshInteractionResults = function() { if (currentHerbResult) renderResult(); };
+        });
+    </script>
+</body>
+</html>
