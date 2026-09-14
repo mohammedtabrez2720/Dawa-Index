@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DawaIndex- Drug Information Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="drugData.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="language.js"></script>
+    <script src="dawa-ai.html"></script>
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="notranslate">
+    <div class="container header-content">
+        <div class="logo">
+            <i class="fas fa-pills"></i>
+            <h1 data-i18n="app_name">Dawa Index</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html" data-i18n="home">Home</a></li>
+                <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                 <!-- ===== INTERACTIONS WITH DROPDOWN ===== -->
+                    <li class="dropdown-parent">
+                        <span class="nav-link-with-arrow" data-i18n="interactions">
+                            Interactions
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="interactions.html">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Drug-Drug Interaction Checker
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Drug-Herb.html">
+                                    <i class="fas fa-mortar-pestle"></i>
+                                    Drug-Herb Interactions Checker
+                                    <span class="badge-new">New</span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="Drug-Food.html">
+                                    <i class="fas fa-utensils"></i>
+                                    Drug-Food Interactions Checker
+                                    <span class="badge-new">New</span>
+                                </a>
+                            </li> 
+                        </ul>
+                           
+                <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                <li><a href="About.html" data-i18n="about">About</a></li>
+                
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+    <div class="container hero-content">
+        <h2 data-i18n="welcome_message">Your Comprehensive Drug Information Resource</h2>
+        <p data-i18n="welcome_subtitle">Find detailed information about medications, side effects, contraindications, and drug interactions</p>
+        
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="features">
+    <div class="container">
+       <h2 data-i18n="what_we_offer" class="section-title">What We Offer</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3 data-i18n="side_effects">Side Effects</h3>
+                <p data-i18n="side_effects_desc">Comprehensive information on potential side effects of medications</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-ban"></i>
+                <h3 data-i18n="contraindications">Contraindications</h3>
+                <p data-i18n="contraindications_desc">Learn about conditions where specific medications should not be used</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-exchange-alt"></i>
+                <h3 data-i18n="drug_interactions">Drug Interactions</h3>
+                <p data-i18n="drug_interactions_desc">Check interactions between different medications</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-book"></i>
+                <h3 data-i18n="drug_library">Drug Library</h3>
+                <p data-i18n="drug_library_desc">Access our extensive database of medication information</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Interaction Checker Section -->
+  
+
+    <!-- Login Modal -->
+   
+
+    <!-- Register Modal -->
+    
+    <!-- Footer -->
+    <footer class="notranslate">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="app_name">Dawa Index</h3>
+                <p data-i18n="footer_desc">Your trusted source for comprehensive drug information, side effects, contraindications, and interactions.</p>
+            </div>
+             <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 6px; border-left: 3px solid #4a9fb9;">
+                    <p style="font-size: 0.85rem; margin: 0; color: #ddd;">
+                        <i class="fas fa-database" style="color: #4a9fb9; margin-right: 5px;"></i>
+                        <strong>Data Source:</strong> All drug information, side effects, and interactions are referenced directly from the <strong>US Food and Drug Administration (openFDA)</strong>.
+                    </p>
+                </div>
+            <div class="footer-section">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-i18n="home">Home</a></li>
+                    <li><a href="library.html" data-i18n="drug_library">Drug Library</a></li>
+                    <li><a href="interactions.html" data-i18n="interactions">Interactions</a></li>
+                    <li><a href="advisory.html" data-i18n="advisory">Advisory</a></li>
+                    <li><a href="dawa-ai.html" data-i18n="dawa_ai"> Dawa AI</a></li>
+                    <li><a href="About.html" data-i18n="about">About</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="contact_us">Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> mohammedtabrez2720@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9273672720</p>
+                <p><i class="fas fa-map-marker-alt"></i><span data-i18n="contact_location"> Malegaon, Maharashtra, (India)</span></p>
+            </div>
+        </div>
+               
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span data-i18n="app_name">DrugInfo</span>. <span data-i18n="all_rights_reserved">All rights reserved</span>.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Update modal titles -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 data-i18n="login_title">Login to Your Account</h2>
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+        </div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email" data-i18n="email">Email Address</label>
+                <input type="email" id="email" data-i18n-placeholder="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password" data-i18n="password">Password</label>
+                <input type="password" id="password" data-i18n-placeholder="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="login">Login</button>
+        </form>
+        <p style="text-align: center; margin-top: 1rem;">
+            <span data-i18n="dont_have_account">Don't have an account?</span>
+            <a href="#" onclick="switchToRegister()" style="color: var(--primary);" data-i18n="switch_to_register">Register</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>
